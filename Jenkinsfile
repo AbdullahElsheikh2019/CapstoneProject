@@ -18,7 +18,7 @@ pipeline {
          }
          stage('Build image') {
             steps { 
-               sh "docker build --build-arg APP_NAME=app -t 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest -f /Dockerfile ."
+               sh "docker build --build-arg APP_NAME=app -t 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest -f Dockerfile ."
             }   
          }
          stage('Push image') {
