@@ -23,16 +23,16 @@ pipeline {
          }
          stage('Push image') {
             steps { 
-               docker.withRegistry('https://372839978247.dkr.ecr.eu-west-1.amazonaws.com', 'ecr:eu-west-1:bttrm-backend-ecr') {
-                  sh "docker push 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest"
+               withDockerRegistry([url: "372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity",credentialsId: "ecr:eu-west-1:UserC3"]){
+               sh "docker push 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest"
                }
             }
          }
          stage('Upload to AWS')  {
-               steps  {
-                     withAWS(region:'eu-west-1',credentials:'UserC3') {
-                     sh 'echo "Uploading content with AWS creds"'
-                     s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'jenkinsabdullah')
+            steps  {
+                  withAWS(region:'eu-west-1',credentials:'UserC3') {
+                  sh 'echo "Uploading content with AWS creds"'
+                  s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'jenkinsabdullah')
                   }
                }
          }
