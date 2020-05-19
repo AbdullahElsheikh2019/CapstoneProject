@@ -12,15 +12,21 @@ pipeline {
             }
          }  
          stage('Clone repository') {
+            steps { 
                git branch: "master", url: "https://github.com/AbdullahElsheikh2019/CapstoneProject.git", credentialsId: "jenkins-github"
+            }
          }
          stage('Build image') {
+            steps { 
                sh "docker build --build-arg APP_NAME=app -t 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest -f /Dockerfile ."
+            }   
          }
          stage('Push image') {
+            steps { 
                docker.withRegistry('https://372839978247.dkr.ecr.eu-west-1.amazonaws.com', 'ecr:eu-west-1:bttrm-backend-ecr') {
                   sh "docker push 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest"
                }
+            }
          }
          stage('Upload to AWS')  {
                steps  {
