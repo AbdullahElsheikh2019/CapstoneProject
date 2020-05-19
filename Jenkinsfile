@@ -23,13 +23,7 @@ pipeline {
          }
          stage('Push image') {
             steps{
-               script{
-                  withDockerServer([uri: "tcp:372839978247.dkr.ecr.eu-west-1.amazonaws.com"]) {
-                     withDockerRegistry([url:'372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity',credentialsId: 'ecr:eu-west-1:UserC3']){
-                        sh "docker push 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest"
-                     }
-                  }
-               }
+               sh "docker push 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest"
             }
          }   
       }
