@@ -22,9 +22,11 @@ pipeline {
             }   
          }
          stage('Push image') {
-            steps{
-               docker.withRegistry('372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity', 'ecr:eu-west-1:UserC3'){
+            script{
+               steps{
+                  docker.withRegistry('372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity', 'ecr:eu-west-1:UserC3'){
                      sh "docker push 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest"
+                  }
                }
             }
          }   
