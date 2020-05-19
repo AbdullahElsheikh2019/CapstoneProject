@@ -3,7 +3,7 @@ LABEL maintainer Abdullah Elsheikh <abdullahelsheikh@gmail.com>
 ## Step 1:
 # Create a working directory
 
-
+COPY index.html /var/www/
 COPY index.html /var/www/html/
 ## Step 2:
 # Copy source code to working directory
