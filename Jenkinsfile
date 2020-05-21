@@ -1,4 +1,9 @@
 pipeline {
+    environment {
+        registry = "372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity"
+        registryCredential = 'UserC3'
+        dockerImage = '372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest'
+  }
      agent any
       stages {
          stage('Lint HTML')  { 
@@ -23,7 +28,11 @@ pipeline {
          }
          stage('Push image') {
             steps{
-                  sh "docker push 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest"
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                        }
+                    }
                }
             }   
          }
