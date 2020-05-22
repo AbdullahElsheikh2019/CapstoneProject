@@ -8,7 +8,8 @@
 setup:
 	# Create python virtualenv & source it
 	# source ~/.devops/bin/activate
-	python3 -m venv ~/.udacity
+	python3 -m venv ~/.udacity &&\
+		source ~/.udacity/bin/activate
 
 install:
 	# This should be run from inside a virtualenv

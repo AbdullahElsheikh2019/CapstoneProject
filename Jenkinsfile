@@ -9,7 +9,6 @@ pipeline {
          stage('Install Requirements')  { 
             steps  {
                sh 'make setup'
-                  sh 'source ~/.udacity/bin/activate'
                      sh "make install "
 
                }       
