@@ -37,7 +37,13 @@ pipeline {
             }
          stage('Run in Kubernetes') {
             steps{
-               sh "sudo -S ./run_kubernetes.sh"
+               sh "dockerpath="372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest""
+                  sh "kubectl run app\
+                     --generator=run-pod/v1\
+                     --image=$dockerpath\
+                     --port=80 --labels app=app"
+                     sh "kubectl get pods"
+                        sh "kubectl port-forward app 8000:80"
                }
             }      
          }
