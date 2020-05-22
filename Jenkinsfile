@@ -8,9 +8,7 @@ pipeline {
       stages {
          stage('Install Requirements')  { 
             steps  {
-               sh 'make setup'
-                     sh "make install "
-
+                  sh "make install "
                }       
             } 
          stage('Lint stage')  { 
