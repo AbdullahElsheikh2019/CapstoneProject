@@ -6,7 +6,15 @@ pipeline {
   }
      agent any
       stages {
-         stage('Lint HTML')  { 
+         stage('Install Requirements')  { 
+            steps  {
+               sh 'make setup'
+                  sh 'source ~/.udacity/bin/activate'
+                     sh "make install "
+
+               }       
+            } 
+         stage('Lint stage')  { 
             steps  {
                sh 'hadolint Dockerfile'
                   sh "pylint --disable=R,C,w1309,W1203 app.py"
