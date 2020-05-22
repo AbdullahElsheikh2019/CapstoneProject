@@ -30,7 +30,7 @@ pipeline {
             steps{
                 script {
                     docker.withRegistry( registry, registryCredential ) {
-                        dockerImage.push()
+                        sh "docker push 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest"
                         }
                     }
                }
