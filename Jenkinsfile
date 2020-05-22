@@ -14,8 +14,6 @@ pipeline {
          stage('Lint stage')  { 
             steps  {
                sh 'hadolint Dockerfile'
-                  sh "pylint --disable=R,C,w1309,W1203 app.py"
-               
             }       
          } 
          stage('Security Scan') {
