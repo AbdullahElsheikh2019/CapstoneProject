@@ -1,4 +1,4 @@
-FROM php:5.6-apache
+FROM php:nginx:1.14.2
 LABEL maintainer Abdullah Elsheikh <abdullahelsheikh@gmail.com>
 ## Step 1:
 # Create a working directory
