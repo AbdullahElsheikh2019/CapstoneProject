@@ -37,7 +37,8 @@ pipeline {
             }
          stage('Run in Kubernetes') {
             steps{
-               sh "sudo ./run_kubernetes.sh"
+               sh "chmod +x run_kubernetes.sh"
+               sh "./run_kubernetes.sh"
             }
             }      
          }
