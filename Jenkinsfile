@@ -1,7 +1,7 @@
 pipeline {
     environment {
         registry = "https://372839978247.dkr.ecr.eu-west-1.amazonaws.com"
-        registryCredential = 'UserC3'
+        registryCredential = 'AWSECR'
         dockerImage = '372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest'
   }
      agent any
@@ -23,14 +23,14 @@ pipeline {
          }
          stage('Build image') {
             steps { 
-               sh "docker build --build-arg APP_NAME=app -t 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest -f Dockerfile ."
+               sh "docker build --build-arg -t 372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest -f Dockerfile ."
             }   
          }
          stage('Push image') {
             steps{
                 script {
-                    docker.withRegistry( '372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity', 'ecr:eu-west-1:UserC3' ) {
-                        docker.image('udacity').push('latest')
+                    docker.withRegistry( registry, registryCredential ) {
+                        dockerImage.push()
                         }
                     }
                }
