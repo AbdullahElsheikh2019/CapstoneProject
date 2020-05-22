@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: app
-        image: nginx:1.14.2
+        image: 5.6-apache
         ports:
         - containerPort: 80

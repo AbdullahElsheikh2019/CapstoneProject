@@ -37,9 +37,8 @@ pipeline {
             }
          stage('Run in Kubernetes') {
             steps{
-               sh "kubectl apply -f deployment.yaml"
-                  sh " kubectl get pods -l app=app"
-               }
+               sh "sudo ./run_kubernetes.sh"
+            }
             }      
          }
       } 
