@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "https://372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity"
+        registry = "https://372839978247.dkr.ecr.eu-west-1.amazonaws.com"
         registryCredential = 'AWSECR'
         dockerImage = '372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest'
   }
@@ -29,8 +29,8 @@ pipeline {
          stage('Push image') {
             steps{
                 script {
-                    docker.withRegistry( registry, registryCredential ) {
-                        dockerImage.push()
+                    docker.withRegistry( '372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity', 'ecr:eu-west-1:AWSECR' ) {
+                        docker.image('udacity').push('latest')
                         }
                     }
                }
