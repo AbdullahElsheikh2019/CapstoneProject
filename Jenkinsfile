@@ -34,7 +34,12 @@ pipeline {
                         }
                     }
                }
-            }   
+            }
+         stage('Run in Kubernetes') {
+            steps{
+               sh "./run_kubernetes.sh"
+               }
+            }      
          }
       } 
   

@@ -5,20 +5,20 @@
 # Step 1:
 # This is your Docker ID/path
 # dockerpath=<>
-dockerpath="abdullah2019/flasksklearn"
+dockerpath="372839978247.dkr.ecr.eu-west-1.amazonaws.com/udacity:latest"
 # Step 2
 # Run the Docker Hub container with kubernetes
-kubectl run flasksklearn\
+kubectl run app\
     --generator=run-pod/v1\
     --image=$dockerpath\
-    --port=80 --labels app=flasksklearn
+    --port=80 --labels app=app
 
 # Step 3:
 # List kubernetes pods
 kubectl get pods
 # Step 4:
 # Forward the container port to a host
-kubectl port-forward flasksklearn 8000:80
+kubectl port-forward app 8000:80
 
 
 
